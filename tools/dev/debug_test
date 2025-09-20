@@ -1,0 +1,15 @@
+#!/bin/bash
+##
+# Simple wrapper script for the debug test script
+# This makes it easy to run debug tests from anywhere
+##
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+MSF_ROOT="$(cd "$SCRIPT_DIR/../../" && pwd)"
+
+# Set up environment
+export MSF_ROOT
+cd "$MSF_ROOT"
+
+# Run the debug test script with all passed arguments
+exec ruby "$MSF_ROOT/tools/dev/debug_test_script.rb" "$@"
